@@ -3,24 +3,20 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from 'react-bootstrap/Button'
 import React from "react";
-import './Todo.css'
 
-export const Todo = ({ number }) => {
+export const Todo = ({ number, editTodo, clearTodo }) => {
     return (
-       <div className="Todo" >
-            <span> { number} </span>
-            <span>ASD564</span>
+        <div className="Todo" >
+            <span className="BayNumber"> {number} </span>
+            <span>ASD54</span>
             <span>27/10</span>
-            <Button variant="outline-success">REGO</Button>{' '}
-            <Button variant="outline-danger">RUC</Button>{' '}
+            {/* <Button variant="outline-success">REGO</Button>{' '}
+            <Button variant="outline-danger">RUC</Button>{' '} */}
 
             <div>
-                <FontAwesomeIcon icon={faPenToSquare} />
-                <FontAwesomeIcon icon={faTrash} onClick={() => console.log("delete it")} />
+                <FontAwesomeIcon icon={faPenToSquare} onClick={() => editTodo()} />
+                <FontAwesomeIcon icon={faTrash} onClick={() => clearTodo()} />
             </div>
         </div>
     )
 }
-/** A cada SPAN darle un espaciado para que no quede todo pegado
- *
- */
