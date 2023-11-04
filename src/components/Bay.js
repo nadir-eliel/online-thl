@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 export const Bay = () => {
-
     const [plateText, setPlateText] = useState("LPB725");
     const [dateText, setDateText] = useState("27/4");
     const [rucValue, setRucValue] = useState(false);
@@ -18,12 +17,12 @@ export const Bay = () => {
         setDateText(event.target.value.slice(0, 5));
     };
 
-    const handleRucChange = (event) => {
-        setRucValue(event.target.value);
+    const handleRucClick = () => {
+        setRucValue(!rucValue); // Cambiar el valor de RUC
     };
 
-    const handleRegoChange = (event) => {
-        setRegoValue(event.target.value);
+    const handleRegoClick = () => {
+        setRegoValue(!regoValue);
     };
 
     return (
@@ -43,12 +42,12 @@ export const Bay = () => {
                     <input
                         type="text"
                         value={rucValue}
-                        onChange={handleRucChange}
+                        onChange={handleRucClick}
                     />
                     <input
                         type="text"
                         value={regoValue}
-                        onChange={handleRegoChange}
+                        onChange={handleRegoClick}
                     />
                 </div>
             ) : (
@@ -67,10 +66,10 @@ export const Bay = () => {
                         </div>
                         <div className="div-3 inline-labels">
                             <p>
-                                <label htmlFor="ruc">RUC</label> {rucValue}
+                                <label htmlFor="ruc" onClick={handleRucClick} className={rucValue ? "green-text" : "red-text"}>RUC</label>
                             </p>
                             <p>
-                                <label htmlFor="rego">REGO</label> {regoValue}
+                                <label htmlFor="rego" onClick={handleRegoClick} className={regoValue ? "green-text" : "red-text"}>REGO</label>
                             </p>
                         </div>
                     </div>
@@ -82,4 +81,3 @@ export const Bay = () => {
         </div>
     );
 }
-
