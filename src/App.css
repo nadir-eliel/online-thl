@@ -31,86 +31,70 @@ h1 {
   border-radius: 5px;
 }
 
-.TodoForm {
-  width: 100%;
-  margin-bottom: 1rem;
+/* styles.css del proyecto final */
+/* styles.css */
+.dark-background {
+  background-color: #232f3e; /* Fondo azul oscuro */
+  color: #ffffff; /* Texto claro */
+  padding: 10px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px; /* Ajusta el ancho según tus necesidades */
+  text-align: center; /* Centra el contenido */
 }
 
-.todo-input {
-  outline: none;
-  background: none;
-  border: 1px solid #8758ff;
-  padding: 0.5rem 1rem;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-  width: 500px;
-  color: #fff;
-}
-
-.todo-input::placeholder {
-  color: #ffffff4d;
-}
-
-.todo-btn {
-  background: #8758ff;
-  color: #fff;
-  border: none;
-  padding: 0.55rem;
-  cursor: pointer;
-}
-
-.Todo {
+.dark-background .row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  background: #8758ff;
-  color: #fff;
-  padding: 0.75rem 1rem;
-  border-radius: 5px;
-  margin-bottom: 0.5rem;
 }
 
-.Todo span {
-  margin-right: 10px;
+.dark-background .row p {
+  margin: 5px 0; /* Margen entre párrafos */
 }
 
-.button-container {
+.dark-background .inline-labels {
   display: flex;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%; /* Añadimos este estilo para que los elementos ocupen todo el ancho disponible */
 }
 
-.button-container .btn {
-  margin-right: 3px;
-  font-size: 10px;
-  /* Ajusta el tamaño de fuente de los botones */
-}
-
-.icon-container {
+/* Estilo para separar los labels "RUC" y "REGO" */
+.dark-background .inline-labels {
+  width: 40%; /* Para ocupar el 50% del ancho disponible */
   display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
 }
 
-.icon-container .fa-icon {
-  font-size: 10px;
-  /* Ajusta el tamaño de fuente de los iconos */
+.inline-labels p {
+  text-align: center; /* Centrar el texto */
+  margin: 5px 0; /* Margen entre párrafos */
 }
 
-.fa-trash {
-  margin-left: 0.75rem;
+.container {
+  display: flex;
+  width: 100%;
 }
 
-.incompleted {
-  color: #fff;
-  cursor: pointer;
+/* CSS para alinear el div que contiene el numero de Bay */
+.number-container {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff; /* Texto claro */
+  font-size: 24px; /* Tamaño del número */
 }
 
-.completed {
-  color: #c5aeff;
-  text-decoration: line-through;
-  cursor: pointer;
+.number-container p {
+  margin: 0;
 }
 
-.edit-icon,
-.delete-icon {
-  cursor: pointer;
+.div-2, .div-3 {
+  width: 80%;
 }
