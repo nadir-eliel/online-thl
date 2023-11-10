@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 
-export const Bay = () => {
-    const [plateText, setPlateText] = useState("LBP725");
-    const [dateText, setDateText] = useState("27/4");
-    const [rucValue, setRucValue] = useState(false);
-    const [regoValue, setRegoValue] = useState(false);
+export const Bay = ({ position, plate, date, ruc, rego }) => {
+
+    const [plateText, setPlateText] = useState(plate);
+    const [dateText, setDateText] = useState(date);
+    const [rucValue, setRucValue] = useState(ruc);
+    const [regoValue, setRegoValue] = useState(rego);
     const [isEditing, setIsEditing] = useState(false);
 
     const handlePlateChange = (event) => {
@@ -37,7 +38,7 @@ export const Bay = () => {
             {isEditing ? (
                 <div className='container'>
                     <div className="number-container">
-                        <p>32</p>
+                        <p>{position}</p>
                     </div>
                     <div className="div-2 inline-labels">
                         <input
@@ -70,7 +71,7 @@ export const Bay = () => {
                 <div className="dark-background">
                     <div className="container">
                         <div className="number-container" onClick={() => setIsEditing(!isEditing)}>
-                            <p>32</p>
+                            <p>{position}</p>
                         </div>
                         <div className="div-2 inline-labels">
                             <p>

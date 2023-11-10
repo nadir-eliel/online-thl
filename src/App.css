@@ -106,3 +106,7 @@ h1 {
 .green-text  {
   color: green;
 }
+
+.bay-item {
+  margin-bottom: 10px; 
+}
