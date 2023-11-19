@@ -15,7 +15,7 @@ export const BayModal = ({ position, plate, date, ruc, rego, onSave, onCancel })
             ruc: updatedRuc,
             rego: updatedRego
         };
-    
+
         try {
             const response = await fetch(`https://online-thl-backend-o1it.vercel.app/api/bays/${position}`, {
                 method: 'PUT',
@@ -24,20 +24,19 @@ export const BayModal = ({ position, plate, date, ruc, rego, onSave, onCancel })
                 },
                 body: JSON.stringify(updatedData)
             });
-    
+
             if (!response.ok) {
                 throw new Error('Error al guardar los cambios');
             }
-    
-            const data = await response.json();
-            console.log('Cambios guardados exitosamente:', data);
+
+            await response.json();
             onSave(updatedPlate, updatedDate, updatedRuc, updatedRego);
             onCancel();
         } catch (error) {
             console.error('Error al guardar los cambios:', error.message);
         }
     };
-    
+
 
     const handlePlateChange = (event) => {
         // Limitar a 6 caracteres en mayúsculas
@@ -47,6 +46,14 @@ export const BayModal = ({ position, plate, date, ruc, rego, onSave, onCancel })
     const handleDateChange = (event) => {
         // Limitar a 3 a 5 caracteres
         setUpdatedDate(event.target.value.slice(0, 5));
+    };
+
+    const handleRucClick = () => {
+        setUpdatedRuc(!updatedRuc); // Cambiar el valor de RUC
+    };
+
+    const handleRegoClick = () => {
+        setUpdatedRego(!updatedRego); // Cambiar el valor de REGO
     };
     return (
         <Modal show={true} onHide={onCancel}>
@@ -80,10 +87,10 @@ export const BayModal = ({ position, plate, date, ruc, rego, onSave, onCancel })
                     </div>
                     <div className="div-3 inline-labels">
                         <p>
-                            <label htmlFor="ruc">RUC</label>
+                            <label htmlFor="rego" onClick={handleRegoClick} className={updatedRego ? "green-text" : "red-text"}>REGO</label>
                         </p>
                         <p>
-                            <label htmlFor="rego">REGO</label>
+                            <label htmlFor="ruc" onClick={handleRucClick} className={updatedRuc ? "green-text" : "red-text"}>RUC</label>
                         </p>
                     </div>
                 </div>

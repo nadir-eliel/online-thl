@@ -112,6 +112,16 @@ h1 {
 }
 
 .inline-item {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   margin-right: 20px;
+}
+
+.inline-item p {
+  margin-bottom: 5px;
+}
+
+.inline-item input[type="text"] {
+  width: 80px; /* Ancho específico para el input */
+  padding: 5px; /* Espaciado interno */
 }

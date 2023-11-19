@@ -11,13 +11,7 @@ export const Bay = ({ position, plate, date, ruc, rego }) => {
 
 
 
-    const handleRucClick = () => {
-        setRucValue(!rucValue); // Cambiar el valor de RUC
-    };
 
-    const handleRegoClick = () => {
-        setRegoValue(!regoValue); // Cambiar el valor de REGO
-    };
 
     const handleEditPlateDateClick = () => {
         setIsEditing(true);
@@ -31,8 +25,8 @@ export const Bay = ({ position, plate, date, ruc, rego }) => {
 
         setPlateText(updatedPlate);
         setDateText(updatedDate);
-        setRucValue(updatedRuc);
         setRegoValue(updatedRego);
+        setRucValue(updatedRuc);
     };
 
     return (
@@ -63,10 +57,10 @@ export const Bay = ({ position, plate, date, ruc, rego }) => {
                         </div>
                         <div className="div-3 inline-labels">
                             <p>
-                                <label htmlFor="ruc" className={rucValue ? "green-text" : "red-text"}>RUC</label>
+                                <label htmlFor="rego" className={regoValue ? "green-text" : "red-text"}>REGO</label>
                             </p>
                             <p>
-                                <label htmlFor="rego" className={regoValue ? "green-text" : "red-text"}>REGO</label>
+                                <label htmlFor="ruc" className={rucValue ? "green-text" : "red-text"}>RUC</label>
                             </p>
                         </div>
                     </div>
