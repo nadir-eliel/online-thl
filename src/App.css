@@ -106,7 +106,12 @@ h1 {
 .green-text  {
   color: green;
 }
+.editable-item {
+  /* border: 1px solid #ccc; */
+  margin-bottom: 10px;
+}
 
-.bay-item {
-  margin-bottom: 10px; 
+.inline-item {
+  display: inline-block;
+  margin-right: 20px;
 }

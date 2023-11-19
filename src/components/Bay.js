@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BayModal } from './BayModal';
 
 export const Bay = ({ position, plate, date, ruc, rego }) => {
 
@@ -8,15 +9,7 @@ export const Bay = ({ position, plate, date, ruc, rego }) => {
     const [regoValue, setRegoValue] = useState(rego);
     const [isEditing, setIsEditing] = useState(false);
 
-    const handlePlateChange = (event) => {
-        // Limitar a 6 caracteres en mayúsculas
-        setPlateText(event.target.value.slice(0, 6).toUpperCase());
-    };
 
-    const handleDateChange = (event) => {
-        // Limitar a 3 a 5 caracteres
-        setDateText(event.target.value.slice(0, 5));
-    };
 
     const handleRucClick = () => {
         setRucValue(!rucValue); // Cambiar el valor de RUC
@@ -33,40 +26,27 @@ export const Bay = ({ position, plate, date, ruc, rego }) => {
     const handleSaveClick = () => {
         setIsEditing(!isEditing);
     }
+
+    const handleSave = (updatedPlate, updatedDate, updatedRuc, updatedRego) => {
+
+        setPlateText(updatedPlate);
+        setDateText(updatedDate);
+        setRucValue(updatedRuc);
+        setRegoValue(updatedRego);
+    };
+
     return (
         <div className="editable-item">
             {isEditing ? (
-                <div className='container'>
-                    <div className="number-container">
-                        <p>{position}</p>
-                    </div>
-                    <div className="div-2 inline-labels">
-                        <input
-                            type="text"
-                            value={plateText}
-                            onChange={handlePlateChange}
-                            placeholder='example: AAA123'
-                        />
-                        <input
-                            type="text"
-                            value={dateText}
-                            onChange={handleDateChange}
-                            placeholder='example: 12/7'
-                        />
-                    </div>
-                    <div className="div-3 inline-labels">
-                        <p>
-                            <label htmlFor="ruc" onClick={handleRucClick} className={rucValue ? "green-text" : "red-text"}>RUC</label>
-                        </p>
-                        <p>
-                            <label htmlFor="rego" onClick={handleRegoClick} className={regoValue ? "green-text" : "red-text"}>REGO</label>
-                        </p>
-                    </div>
-                    <div>
-                        <button type='submit' onClick={handleSaveClick}>SAVE</button>
-                        <button type='submit' onClick={handleSaveClick}>CANCEL</button>
-                    </div>
-                </div>
+                <BayModal
+                    position={position}
+                    plate={plate}
+                    date={date}
+                    ruc={ruc}
+                    rego={rego}
+                    onSave={handleSave}
+                    onCancel={() => setIsEditing(false)}
+                />
             ) : (
                 <div className="dark-background">
                     <div className="container">

@@ -24,6 +24,7 @@ export const TodoWrapper = () => {
 
         fetchData();
     }, []);
+
     const addTodo = todo => {
         setTodos([...todos,
         { id: uuidv4(), task: todo, completed: false, isEditing: false }
@@ -43,7 +44,7 @@ export const TodoWrapper = () => {
 
     const renderColumns = () => {
         const chunkedTodos = chunkArray(todos, 8);
-    
+
         return chunkedTodos.map((column, columnIndex) => (
             <div key={columnIndex} className="col-3">
                 {column.map((bay, rowIndex) => (
