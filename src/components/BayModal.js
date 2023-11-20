@@ -87,10 +87,10 @@ export const BayModal = ({ position, plate, date, ruc, rego, onSave, onCancel })
                     </div>
                     <div className="div-3 inline-labels">
                         <p>
-                            <label htmlFor="rego" onClick={handleRegoClick} className={updatedRego ? "green-text" : "red-text"}>REGO</label>
+                            <Button htmlFor="rego" onClick={handleRegoClick} className={updatedRego ? "btn-success" : "btn-danger"}>REGO</Button>
                         </p>
                         <p>
-                            <label htmlFor="ruc" onClick={handleRucClick} className={updatedRuc ? "green-text" : "red-text"}>RUC</label>
+                            <Button htmlFor="ruc" onClick={handleRucClick} className={updatedRuc ? "btn-success" : "btn-danger"}>RUC</Button>
                         </p>
                     </div>
                 </div>
