@@ -62,9 +62,6 @@ export const BayModal = ({ position, plate, date, ruc, rego, onSave, onCancel })
             </Modal.Header>
             <Modal.Body>
                 <div className='container'>
-                    <div className="number-container">
-                        <p>{position}</p>
-                    </div>
                     <div className="div-2 inline-labels">
                         <div className="inline-item">
                             <p>PLATE</p>
@@ -72,7 +69,6 @@ export const BayModal = ({ position, plate, date, ruc, rego, onSave, onCancel })
                                 type="text"
                                 value={updatedPlate}
                                 onChange={handlePlateChange}
-                            // placeholder='example: AAA123'
                             />
                         </div>
                         <div className="inline-item">
@@ -81,7 +77,6 @@ export const BayModal = ({ position, plate, date, ruc, rego, onSave, onCancel })
                                 type="text"
                                 value={updatedDate}
                                 onChange={handleDateChange}
-                            // placeholder='example: 12/7'
                             />
                         </div>
                     </div>

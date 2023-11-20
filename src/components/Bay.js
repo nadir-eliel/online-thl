@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
 import { BayModal } from './BayModal';
 
 export const Bay = ({ position, plate, date, ruc, rego }) => {
@@ -42,12 +43,12 @@ export const Bay = ({ position, plate, date, ruc, rego }) => {
                     onCancel={() => setIsEditing(false)}
                 />
             ) : (
-                <div className="dark-background">
+                <div className="bay-background">
                     <div className="container">
                         <div className="number-container" onClick={() => setIsEditing(!isEditing)}>
                             <p>{position}</p>
                         </div>
-                        <div className="div-2 inline-labels">
+                        <div className="div-2 inline-labels d-flex flex-column">
                             <p>
                                 <label htmlFor="date">{plateText}</label>
                             </p>
@@ -55,12 +56,12 @@ export const Bay = ({ position, plate, date, ruc, rego }) => {
                                 <label htmlFor="date">{dateText}</label>
                             </p>
                         </div>
-                        <div className="div-3 inline-labels">
-                            <p>
-                                <label htmlFor="rego" className={regoValue ? "green-text" : "red-text"}>REGO</label>
+                        <div className="div-3 inline-labels d-flex flex-column">
+                            <p className="w-100">
+                                <Button htmlFor="rego" variant={regoValue ? "outline-success" : "outline-danger"} disabled className="btn-block">REGO</Button>
                             </p>
-                            <p>
-                                <label htmlFor="ruc" className={rucValue ? "green-text" : "red-text"}>RUC</label>
+                            <p className="w-100">
+                                <Button htmlFor="ruc" variant={rucValue ? "outline-success" : "outline-danger"} disabled className="btn-block">RUC</Button>
                             </p>
                         </div>
                     </div>

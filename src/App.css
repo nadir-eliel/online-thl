@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+/* Paleta de colores */
+:root{
+  --color-background: #060606;
+  --color-modal: #10212f;
+  --color-cards: #204c63;
+  --color-text: #307997;
+  --color-text2: #2ba2ca;
+}
+
 * {
   font-family: 'Poppins', sans-serif;
   margin: 0;
@@ -8,7 +17,7 @@
 }
 
 body {
-  background: #8758ff;
+  background: var(--color-background);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,13 +28,13 @@ body {
 }
 
 h1 {
-  color: #fff;
+  color: var(--color-text);
   margin-bottom: 0.5rem;
   font-size: 1rem;
 }
 
 .TodoWrapper {
-  background: #1A1A40;
+  background: var(--color-background);
   margin-top: 2rem;
   padding: 2rem;
   border-radius: 5px;
@@ -33,9 +42,9 @@ h1 {
 
 /* styles.css del proyecto final */
 /* styles.css */
-.dark-background {
-  background-color: #232f3e; /* Fondo azul oscuro */
-  color: #ffffff; /* Texto claro */
+.bay-background {
+  background-color: var(--color-cards); /* Fondo azul oscuro */
+  color: white; /* Texto claro */
   padding: 10px; /* Espaciado interno */
   border-radius: 5px; /* Bordes redondeados */
   display: flex;
@@ -46,24 +55,25 @@ h1 {
   text-align: center; /* Centra el contenido */
 }
 
-.dark-background .row {
+.bay-background .row {
   display: flex;
   justify-content: space-between;
 }
 
-.dark-background .row p {
+.bay-background .row p {
   margin: 5px 0; /* Margen entre párrafos */
 }
 
-.dark-background .inline-labels {
+.bay-background .inline-labels {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding: 10px;
   width: 100%; /* Añadimos este estilo para que los elementos ocupen todo el ancho disponible */
 }
 
 /* Estilo para separar los labels "RUC" y "REGO" */
-.dark-background .inline-labels {
+.bay-background .inline-labels {
   width: 40%; /* Para ocupar el 50% del ancho disponible */
   display: flex;
   flex-direction: column;
@@ -87,7 +97,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #ffffff; /* Texto claro */
+  color: var(--color-text2); /* Texto claro */
   font-size: 24px; /* Tamaño del número */
 }
 
@@ -99,13 +109,6 @@ h1 {
   width: 80%;
 }
 
-.red-text  {
-  color: red;
-}
-
-.green-text  {
-  color: green;
-}
 .editable-item {
   /* border: 1px solid #ccc; */
   margin-bottom: 10px;
@@ -114,7 +117,9 @@ h1 {
 .inline-item {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin-right: 20px;
+  margin: 5px 0; /* Margen entre párrafos */
 }
 
 .inline-item p {
@@ -123,5 +128,4 @@ h1 {
 
 .inline-item input[type="text"] {
   width: 80px; /* Ancho específico para el input */
-  padding: 5px; /* Espaciado interno */
 }
