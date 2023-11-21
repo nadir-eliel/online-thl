@@ -18,3 +18,9 @@ MAS189 REGO
 ...
 
 - Crear una función para resetear todo el tablero. Deberia ser como en Github que pide que escriba un texto especifico para borrar todo: "clean board" (ignoreCase) y actualizar la base de datos para que todo esté vacío. Nota: ¿Debería guardar un historico de que vehiculo estuvo en qué bay?
+
+- Quiero que la app sea responsive para celulares y tablets
+
+- Quiero que la app se actualice automaticamente en todos los dispositivos al mismo tiempo.
+
+- Hacer un historico de los vehiculos, para saber quien editó por ultima vez un Bay.

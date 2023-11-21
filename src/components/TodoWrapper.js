@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import { Bay } from "./Bay";
+import io from 'socket.io-client';
+
 uuidv4()
+const socket = io.connect("http://localhost:4000/");
 
 export const TodoWrapper = () => {
     const [todos, setTodos] = useState([])
@@ -23,6 +26,10 @@ export const TodoWrapper = () => {
         };
 
         fetchData();
+
+         socket.on('put-event', (data) => {
+             console.log('Evento PUT recibido:', data);
+         });
     }, []);
 
     const addTodo = todo => {
