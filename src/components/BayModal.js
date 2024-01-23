@@ -17,7 +17,7 @@ export const BayModal = ({ position, plate, date, ruc, rego, onSave, onCancel })
         };
 
         try {
-            const response = await fetch(`https://online-thl-backend-o1it.vercel.app/api/bays/${position}`, {
+            const response = await fetch(`http://localhost:4000/api/bays/${position}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -55,6 +55,7 @@ export const BayModal = ({ position, plate, date, ruc, rego, onSave, onCancel })
     const handleRegoClick = () => {
         setUpdatedRego(!updatedRego); // Cambiar el valor de REGO
     };
+    
     return (
         <Modal show={true} onHide={onCancel}>
             <Modal.Header closeButton>

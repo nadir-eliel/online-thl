@@ -2,43 +2,48 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import { BayModal } from './BayModal';
 
-export const Bay = ({ position, plate, date, ruc, rego }) => {
-
+export const Bay = ({ idbay, plate, date, ruc, rego, socket }) => {
+   
     const [plateText, setPlateText] = useState(plate);
     const [dateText, setDateText] = useState(date);
     const [rucValue, setRucValue] = useState(ruc);
     const [regoValue, setRegoValue] = useState(rego);
     const [isEditing, setIsEditing] = useState(false);
 
+    /*
+        const handleEditPlateDateClick = () => {
+            setIsEditing(true);
+        };
 
-
-
-
-    const handleEditPlateDateClick = () => {
-        setIsEditing(true);
-    };
-
-    const handleSaveClick = () => {
-        setIsEditing(!isEditing);
-    }
+        const handleSaveClick = () => {
+            setIsEditing(!isEditing);
+        }
+    */
 
     const handleSave = (updatedPlate, updatedDate, updatedRuc, updatedRego) => {
-
         setPlateText(updatedPlate);
         setDateText(updatedDate);
         setRegoValue(updatedRego);
         setRucValue(updatedRuc);
+        socket.emit('put-event',
+            {
+                idbay: idbay,
+                plate: updatedPlate,
+                date: updatedDate,
+                rego: updatedRego,
+                ruc: updatedRuc
+            })
     };
 
     return (
         <div className="editable-item">
             {isEditing ? (
                 <BayModal
-                    position={position}
-                    plate={plate}
-                    date={date}
-                    ruc={ruc}
-                    rego={rego}
+                    position={idbay}
+                    plate={plateText}
+                    date={dateText}
+                    ruc={rucValue}
+                    rego={regoValue}
                     onSave={handleSave}
                     onCancel={() => setIsEditing(false)}
                 />
@@ -46,7 +51,7 @@ export const Bay = ({ position, plate, date, ruc, rego }) => {
                 <div className="bay-background">
                     <div className="container">
                         <div className="number-container" onClick={() => setIsEditing(!isEditing)}>
-                            <p>{position}</p>
+                            <p>{idbay}</p>
                         </div>
                         <div className="div-2 inline-labels d-flex flex-column">
                             <p>

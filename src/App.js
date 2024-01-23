@@ -1,11 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import { TodoWrapper } from './components/TodoWrapper';
+import { OnlineContainer } from './components/OnlineContainer';
 
 function App() {
   return (
     <div className="App">
-      <TodoWrapper/>
+      <OnlineContainer />
     </div>
   );
 }
