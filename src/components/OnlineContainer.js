@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import { Bay } from "./Bay";
+import { AlertUpdate } from './AlertUpdate'
 import Button from 'react-bootstrap/Button';
-import Toast from 'react-bootstrap/Toast';
+
 import { ResetConfirmation } from "./ResetConfirmation";
 import io from 'socket.io-client'
 
-const socket = io('http://localhost:4000')
+const socket = io(process.env.REACT_APP_API_URL_LOCAL)
 
 uuidv4()
 
@@ -57,7 +58,6 @@ export const OnlineContainer = () => {
     };
 
     const renderColumns = () => {
-        console.log({ bays })
         return bays.map((bay) => (
             <Bay key={bay.idbay}
                 idbay={bay.idbay}
@@ -138,18 +138,8 @@ export const OnlineContainer = () => {
     return (
         <div className="OnlineContainer">
             <h1>Online Container</h1>
+            <AlertUpdate isUpdated={isUpdated} closeToast={closeToast}/>
 
-            <Toast show={isUpdated} onClose={closeToast}>
-                <Toast.Header>
-                    <img
-                        src="holder.js/20x20?text=%20"
-                        className="rounded me-2"
-                        alt=""
-                    />
-                    <strong className="me-auto">Atention!</strong>
-                </Toast.Header>
-                <Toast.Body>Woohoo, you're seeing an old version, close this to see the latest version!</Toast.Body>
-            </Toast>
             {renderColumns()}
         </div>
     );
