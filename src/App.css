@@ -129,3 +129,22 @@ h1 {
 .inline-item input[type="text"] {
   width: 80px; /* Ancho específico para el input */
 }
+
+/* .OnlineContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 1366px;
+  margin: 0 auto;
+} */
+
+.bayContainer {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 5px;
+    grid-row-gap: 3px;
+}
+
+
+

@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import { BayModal } from './BayModal';
 
 export const Bay = ({ idbay, plate, date, ruc, rego, socket }) => {
-   
+
     const [plateText, setPlateText] = useState(plate);
     const [dateText, setDateText] = useState(date);
     const [rucValue, setRucValue] = useState(ruc);
@@ -36,7 +36,7 @@ export const Bay = ({ idbay, plate, date, ruc, rego, socket }) => {
     };
 
     return (
-        <div className="editable-item">
+        <div className="editableItem">
             {isEditing ? (
                 <BayModal
                     position={idbay}
@@ -48,27 +48,25 @@ export const Bay = ({ idbay, plate, date, ruc, rego, socket }) => {
                     onCancel={() => setIsEditing(false)}
                 />
             ) : (
-                <div className="bay-background">
-                    <div className="container">
-                        <div className="number-container" onClick={() => setIsEditing(!isEditing)}>
-                            <p>{idbay}</p>
-                        </div>
-                        <div className="div-2 inline-labels d-flex flex-column">
-                            <p>
-                                <label htmlFor="date">{plateText}</label>
-                            </p>
-                            <p>
-                                <label htmlFor="date">{dateText}</label>
-                            </p>
-                        </div>
-                        <div className="div-3 inline-labels d-flex flex-column">
-                            <p className="w-100">
-                                <Button htmlFor="rego" variant={regoValue ? "outline-success" : "outline-danger"} disabled className="btn-block">REGO</Button>
-                            </p>
-                            <p className="w-100">
-                                <Button htmlFor="ruc" variant={rucValue ? "outline-success" : "outline-danger"} disabled className="btn-block">RUC</Button>
-                            </p>
-                        </div>
+                <div className="bay">
+                    <div className="bayPosition" onClick={() => setIsEditing(!isEditing)}>
+                        <p>{idbay}</p>
+                    </div>
+                    <div className="">
+                        <p className='labels'>
+                            <label htmlFor="date">{plateText}</label>
+                        </p>
+                        <p className='labels'>
+                            <label htmlFor="date">{dateText}</label>
+                        </p>
+                    </div>
+                    <div className="">
+                        <p className="">
+                            <Button htmlFor="rego" variant={regoValue ? "outline-success" : "outline-danger"} disabled className="btn-block">REGO</Button>
+                        </p>
+                        <p className="">
+                            <Button htmlFor="ruc" variant={rucValue ? "outline-success" : "outline-danger"} disabled className="btn-block">RUC</Button>
+                        </p>
                     </div>
                 </div>
             )}

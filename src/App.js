@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import './AppStyles.css';
 import { OnlineContainer } from './components/OnlineContainer';
 
 function App() {

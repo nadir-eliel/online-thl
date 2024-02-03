@@ -1,0 +1,37 @@
+.app {
+    background: red;
+}
+
+.OnlineContainer {
+    background: lightgreen;
+    padding: 10px;
+}
+
+.title {
+    text-align: center;
+}
+
+.bayContainer {
+    background: red;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.editableItem {
+    width: 200px; 
+    height: 250px; 
+    margin: 10px; 
+    background-color: lightblue; /* Color de fondo */
+    display: flex;
+}
+
+.bayPosition{
+    background: green;
+}
+
+.labels {
+    display: inline;
+    align-items: center;
+}

@@ -36,11 +36,11 @@ export const OnlineContainer = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('http://localhost:4000/api/bays');
+            const response = await fetch(`${process.env.REACT_APP_API_URL_LOCAL}/api/bays`);
 
             if (response.ok) {
                 const data = await response.json();
-                setBays(data.slice(0, 4));
+                setBays(data);
             } else {
                 console.error('Error al obtener datos de la API:', response.status);
             }
@@ -58,34 +58,18 @@ export const OnlineContainer = () => {
     };
 
     const renderColumns = () => {
-        return bays.map((bay) => (
-            <Bay key={bay.idbay}
+        return bays.map((bay, rowIndex) => (
+            <Bay
+                key={bay.idbay}
                 idbay={bay.idbay}
                 plate={bay.plate}
                 date={bay.date}
                 ruc={bay.ruc}
                 rego={bay.rego}
-                socket={socket} />
+                socket={socket}
+            />
         ))
-        /*const chunkedOnline = chunkArray(bays, 8);
-
-        return chunkedOnline.map((column, columnIndex) => (
-            <div key={columnIndex} className="col-3">
-                {column.map((bay, rowIndex) => (
-                    <Bay
-                        key={rowIndex}
-                        position={bay.idbay}
-                        plate={bay.plate}
-                        date={bay.date}
-                        ruc={bay.ruc}
-                        rego={bay.rego}
-                        socket={socket}
-                        className="bay-item"
-                    />
-                ))}
-            </div>
-        ));*/
-    };
+    }
 
     const handleConfirmationShow = () => {
         setShowConfirmation(true);
@@ -106,7 +90,7 @@ export const OnlineContainer = () => {
             // for (let index = 1; index <= 32; index++) {
             try {
 
-                const response = await fetch(`http://localhost:4000/api/bays/reset?reset=clean`, {
+                const response = await fetch(`${process.env.REACT_APP_API_URL_LOCAL}/api/bays/reset?reset=clean`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json'
@@ -137,10 +121,11 @@ export const OnlineContainer = () => {
 
     return (
         <div className="OnlineContainer">
-            <h1>Online Container</h1>
-            <AlertUpdate isUpdated={isUpdated} closeToast={closeToast}/>
-
-            {renderColumns()}
+            <h1 className="title">Online Container</h1>
+            <AlertUpdate isUpdated={isUpdated} closeToast={closeToast} />
+            <div className="bayContainer">
+                {renderColumns()}
+            </div>
         </div>
     );
 }

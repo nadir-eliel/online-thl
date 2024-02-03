@@ -17,7 +17,7 @@ export const BayModal = ({ position, plate, date, ruc, rego, onSave, onCancel })
         };
 
         try {
-            const response = await fetch(`http://localhost:4000/api/bays/${position}`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL_LOCAL}/api/bays/${position}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
