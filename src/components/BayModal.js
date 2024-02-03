@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Form from 'react-bootstrap/Form';
 
 export const BayModal = ({ position, plate, date, ruc, rego, onSave, onCancel }) => {
     const [updatedPlate, setUpdatedPlate] = useState(plate);
@@ -55,41 +57,39 @@ export const BayModal = ({ position, plate, date, ruc, rego, onSave, onCancel })
     const handleRegoClick = () => {
         setUpdatedRego(!updatedRego); // Cambiar el valor de REGO
     };
-    
+
     return (
-        <Modal show={true} onHide={onCancel}>
+        <Modal show={true} onHide={onCancel} size="sm">
             <Modal.Header closeButton>
                 <Modal.Title>Editing Bay {position}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <div className='container'>
-                    <div className="div-2 inline-labels">
-                        <div className="inline-item">
-                            <p>PLATE</p>
-                            <input
-                                type="text"
-                                value={updatedPlate}
-                                onChange={handlePlateChange}
-                            />
-                        </div>
-                        <div className="inline-item">
-                            <p>DATE</p>
-                            <input
-                                type="text"
-                                value={updatedDate}
-                                onChange={handleDateChange}
-                            />
-                        </div>
+                    <InputGroup className="mb-3">
+                        <InputGroup.Text id="basic-addon1">PLATE</InputGroup.Text>
+                        <Form.Control
+                            placeholder="AAA123"
+                            aria-label="Plate"
+                            aria-describedby="basic-addon1"
+                            value={updatedPlate}
+                            onChange={handlePlateChange}
+                        />
+                    </InputGroup>
+                    <InputGroup className="mb-3">
+                        <InputGroup.Text id="basic-addon1">DATE</InputGroup.Text>
+                        <Form.Control
+                            placeholder="31/05"
+                            aria-label="Date"
+                            aria-describedby="basic-addon1"
+                            value={updatedDate}
+                            onChange={handleDateChange}
+                        />
+                    </InputGroup>
+
+                    <div className="buttons">
+                        <Button htmlFor="rego" onClick={handleRegoClick} className={updatedRego ? "btn-success" : "btn-danger"}>REGO</Button>
+                        <Button htmlFor="ruc" onClick={handleRucClick} className={updatedRuc ? "btn-success" : "btn-danger"}>RUC</Button>
+                        <Button htmlFor="ruc" onClick={handleRucClick} className={updatedRuc ? "btn-success" : "btn-danger"}>COF</Button>
                     </div>
-                    <div className="div-3 inline-labels">
-                        <p>
-                            <Button htmlFor="rego" onClick={handleRegoClick} className={updatedRego ? "btn-success" : "btn-danger"}>REGO</Button>
-                        </p>
-                        <p>
-                            <Button htmlFor="ruc" onClick={handleRucClick} className={updatedRuc ? "btn-success" : "btn-danger"}>RUC</Button>
-                        </p>
-                    </div>
-                </div>
             </Modal.Body>
             <Modal.Footer className="justify-content-center">
                 <Button variant="secondary" onClick={onCancel}>
