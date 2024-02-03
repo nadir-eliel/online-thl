@@ -36,7 +36,7 @@ export const Bay = ({ idbay, plate, date, ruc, rego, socket }) => {
     };
 
     return (
-        <div className="editableItem">
+        <div className="">
             {isEditing ? (
                 <BayModal
                     position={idbay}
@@ -48,25 +48,27 @@ export const Bay = ({ idbay, plate, date, ruc, rego, socket }) => {
                     onCancel={() => setIsEditing(false)}
                 />
             ) : (
-                <div className="bay">
+                <div className="editableItem">
                     <div className="bayPosition" onClick={() => setIsEditing(!isEditing)}>
                         <p>{idbay}</p>
                     </div>
-                    <div className="">
-                        <p className='labels'>
-                            <label htmlFor="date">{plateText}</label>
-                        </p>
-                        <p className='labels'>
-                            <label htmlFor="date">{dateText}</label>
-                        </p>
-                    </div>
-                    <div className="">
-                        <p className="">
+                    <div className='bayContent'>
+                        <dl className="labels">
+                            <div>
+                                <dt>REGO:</dt>
+                                <dd>{plateText}</dd>
+                            </div>
+                            <div>
+                                <dt>DATE:</dt>
+                                <dd>{dateText}</dd>
+                            </div>
+                        </dl>
+                        <div className="buttons">
                             <Button htmlFor="rego" variant={regoValue ? "outline-success" : "outline-danger"} disabled className="btn-block">REGO</Button>
-                        </p>
-                        <p className="">
                             <Button htmlFor="ruc" variant={rucValue ? "outline-success" : "outline-danger"} disabled className="btn-block">RUC</Button>
-                        </p>
+                            <Button htmlFor="rego" variant={regoValue ? "outline-success" : "outline-danger"} disabled className="btn-block">COF</Button>
+                            {/* <Button htmlFor="ruc" variant={rucValue ? "outline-success" : "outline-danger"} disabled className="btn-block">SELF</Button> */}
+                        </div>
                     </div>
                 </div>
             )}
