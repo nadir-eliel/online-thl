@@ -1,9 +1,19 @@
+/* Paleta de colores */
+:root {
+    --color-background: #07090D;
+    --color-modal: #1E3030;
+    --color-cards: #F0F2F2;
+    --color-text: #36593F;
+    --color-text2: #58735C;
+}
+
 .app {
-    background: red;
+    background: var(--color-background);
 }
 
 .OnlineContainer {
-    background: lightgreen;
+    background: var(--color-background);
+    color: #F0F2F2;
     padding: 10px;
 }
 
@@ -12,7 +22,7 @@
 }
 
 .bayContainer {
-    background: red;
+    background: var(--color-background);
     display: flex;
     padding: 10px;
     justify-content: space-around;
@@ -24,8 +34,9 @@
     height: 185px;
     margin: 10px;
     border-radius: 20px;
-    background-color: lightblue;
+    background-color: var(--color-cards);
     display: flex;
+    /* border: 1px solid red; */
 }
 
 .bayPosition {
@@ -33,19 +44,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid black;
-    border-radius: 20px;
-   font-size: 45px;
+    border: 1px 0px 1px 1px solid rgb(119, 9, 9);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    font-size: 45px;
     padding: 10px;
-    background: green;
+    color: #FFFFFF;
+    background: var(--color-modal);
 }
 
 .bayContent {
     flex: 4;
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
-    border-radius: 20px;
+    border: 1px 1px 1px 0px solid black;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
     padding: 10px;
     align-items: center;
     justify-content: center;
@@ -59,7 +73,7 @@
 
 .labels {
     flex-basis: 50%;
-    justify-content: space-around; 
+    justify-content: space-around;
 }
 
 .buttons {
@@ -82,9 +96,9 @@
 
 .labels dt,
 .labels dd {
-  display: inline-block;
-  padding: 5px;
-  margin: 0;
+    display: inline-block;
+    padding: 5px;
+    margin: 0;
 }
 
 /*CSS for Modal*/

@@ -55,40 +55,28 @@ export const Bay = ({ idbay, plate, date, ruc, rego, socket }) => {
                         <p>{idbay}</p>
                     </div>
                     <div className='bayContent'>
-                        {/* <dl className="labels">
-                            <div>
-                                <dt>REGO:</dt>
-                                <dd>{plateText}</dd>
-                            </div>
-                            <div>
-                                <dt>DATE:</dt>
-                                <dd>{dateText}</dd>
-                            </div>
-                        </dl> */}
-
                         <InputGroup className="mb-3">
-                        <InputGroup.Text id="basic-addon1">PLATE</InputGroup.Text>
-                        <Form.Control
-                            placeholder="AAA123"
-                            aria-label="Plate"
-                            aria-describedby="basic-addon1"
-                            value={plateText}
-                        />
-                    </InputGroup>
-                    <InputGroup className="mb-3">
-                        <InputGroup.Text id="basic-addon1">DATE</InputGroup.Text>
-                        <Form.Control
-                            placeholder="31/05"
-                            aria-label="Date"
-                            aria-describedby="basic-addon1"
-                            value={dateText}
-                        />
-                    </InputGroup>
+                            <InputGroup.Text id="basic-addon1">PLATE</InputGroup.Text>
+                            <Form.Control
+                                placeholder="AAA123"
+                                aria-label="Plate"
+                                aria-describedby="basic-addon1"
+                                value={plateText}
+                            />
+                        </InputGroup>
+                        <InputGroup className="mb-3">
+                            <InputGroup.Text id="basic-addon1">DATE</InputGroup.Text>
+                            <Form.Control
+                                placeholder="31/05"
+                                aria-label="Date"
+                                aria-describedby="basic-addon1"
+                                value={dateText}
+                            />
+                        </InputGroup>
                         <div className="buttons">
-                            <Button htmlFor="rego" variant={regoValue ? "outline-success" : "outline-danger"} disabled className="btn-block">REGO</Button>
-                            <Button htmlFor="ruc" variant={rucValue ? "outline-success" : "outline-danger"} disabled className="btn-block">RUC</Button>
-                            <Button htmlFor="rego" variant={regoValue ? "outline-success" : "outline-danger"} disabled className="btn-block">COF</Button>
-                            {/* <Button htmlFor="ruc" variant={rucValue ? "outline-success" : "outline-danger"} disabled className="btn-block">SELF</Button> */}
+                            <Button htmlFor="rego" variant={regoValue ? "success" : "danger"} disabled className="btn-block">REGO</Button>
+                            <Button htmlFor="ruc" variant={rucValue ? "success" : "danger"} disabled className="btn-block">RUC</Button>
+                            <Button htmlFor="rego" variant={regoValue ? "success" : "danger"} disabled className="btn-block">COF</Button>
                         </div>
                     </div>
                 </div>
