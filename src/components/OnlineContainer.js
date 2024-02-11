@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Bay } from "./Bay";
 import { AlertUpdate } from './AlertUpdate'
 import Button from 'react-bootstrap/Button';
+import useSWR from 'swr'
 
 import { ResetConfirmation } from "./ResetConfirmation";
 import io from 'socket.io-client'
@@ -11,12 +12,17 @@ const socket = io(process.env.REACT_APP_API_URL_LOCAL)
 
 uuidv4()
 
+export const fetcher = async (url) => {
+    const response = await fetch(url);
+    return response.json();
+};
+
 export const OnlineContainer = () => {
-    const [bays, setBays] = useState([])
     const [isUpdated, setIsUpdated] = useState(false)
     const [showConfirmation, setShowConfirmation] = useState(false);
     const [keyword, setKeyword] = useState('');
 
+    /*
     useEffect(() => {
         fetchData()
     }, [])
@@ -48,6 +54,7 @@ export const OnlineContainer = () => {
             console.error('Error en la llamada a la API:', error);
         }
     };
+    */
 
     const chunkArray = (arr, chunkSize) => {
         const chunkedArray = [];
@@ -57,8 +64,8 @@ export const OnlineContainer = () => {
         return chunkedArray;
     };
 
-    const renderColumns = () => {
-        return bays.map((bay, rowIndex) => (
+    const renderColumns = (estacionamientos) => {
+        return estacionamientos.map((bay, rowIndex) => (
             <Bay
                 key={bay.idbay}
                 idbay={bay.idbay}
@@ -106,7 +113,7 @@ export const OnlineContainer = () => {
                 console.error('Error al guardar los cambios:', error.message);
             }
             //  }
-            setBays([]);
+            //setBays([]);
             handleConfirmationClose();
             renderColumns()
         } else {
@@ -119,12 +126,24 @@ export const OnlineContainer = () => {
         window.location.reload()
     }
 
+    // using SWR
+    const { data: estacionamientos, error } = useSWR(`${process.env.REACT_APP_API_URL_LOCAL}/api/bays`, fetcher);
+
+    if (error) return <div>Error fetching data</div>;
+    if (!estacionamientos) return <div>Loading...</div>;
+
     return (
         <div className="OnlineContainer">
             <h1 className="title">Online Container</h1>
             <AlertUpdate isUpdated={isUpdated} closeToast={closeToast} />
             <div className="bayContainer">
-                {renderColumns()}
+                {estacionamientos.map((bay, rowIndex) => (
+                    <Bay
+                        key={rowIndex}
+                        bay={bay}
+                        socket={socket}
+                    />
+                ))}
             </div>
         </div>
     );

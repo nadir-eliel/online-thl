@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import { BayModal } from './BayModal';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
 
-export const Bay = ({ idbay, plate, date, ruc, rego, socket }) => {
-    console.log("renderizando", idbay)
+export const Bay = ({ bay, socket }) => {
+    const { idbay, plate, date, ruc, rego } = bay
     const [plateText, setPlateText] = useState(plate);
     const [dateText, setDateText] = useState(date);
     const [rucValue, setRucValue] = useState(ruc);
@@ -21,6 +21,13 @@ export const Bay = ({ idbay, plate, date, ruc, rego, socket }) => {
             setIsEditing(!isEditing);
         }
     */
+    useEffect(() => {
+        setPlateText(plate);
+        setDateText(date);
+        setRegoValue(rego)
+        setRucValue(ruc)
+    }, [plate, date, rego, ruc]);
+
 
     const handleSave = (updatedPlate, updatedDate, updatedRuc, updatedRego) => {
         setPlateText(updatedPlate);
@@ -61,7 +68,7 @@ export const Bay = ({ idbay, plate, date, ruc, rego, socket }) => {
                                 placeholder="AAA123"
                                 aria-label="Plate"
                                 aria-describedby="basic-addon1"
-                                defaultValue={plateText}
+                                value={plateText}
                             />
                         </InputGroup>
                         <InputGroup className="mb-3">
@@ -70,7 +77,7 @@ export const Bay = ({ idbay, plate, date, ruc, rego, socket }) => {
                                 placeholder="31/05"
                                 aria-label="Date"
                                 aria-describedby="basic-addon1"
-                                defaultValue={dateText}
+                                value={dateText}
                             />
                         </InputGroup>
                         <div className="buttons">
