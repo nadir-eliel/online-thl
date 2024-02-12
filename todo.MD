@@ -24,3 +24,15 @@ MAS189 REGO
 - Quiero que la app se actualice automaticamente en todos los dispositivos al mismo tiempo.
 
 - Hacer un historico de los vehiculos, para saber quien editó por ultima vez un Bay.
+
+- Limpiar el codigo de funciones innecesarias
+
+- Agregar un spinner en el loading **DONE**
+
+- Agregar un mensaje de error cuando no carga la API **DONE**
+
+- Estilizar components Spinner y Error
+
+- Borrar todo el codigo de SocketIO
+
+- Agregar al codigo ESLint y Prettier

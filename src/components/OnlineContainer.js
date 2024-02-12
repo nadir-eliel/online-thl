@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import { Bay } from "./Bay";
 import { AlertUpdate } from './AlertUpdate'
-import Button from 'react-bootstrap/Button';
+import { LoadingSpinner } from './LoadingSpinner'
+import { Error } from './Error'
 import useSWR from 'swr'
 
 import { ResetConfirmation } from "./ResetConfirmation";
@@ -22,48 +23,7 @@ export const OnlineContainer = () => {
     const [showConfirmation, setShowConfirmation] = useState(false);
     const [keyword, setKeyword] = useState('');
 
-    /*
-    useEffect(() => {
-        fetchData()
-    }, [])
-
-    useEffect(() => {
-        const receiveUpdate = (data) => {
-            // console.log({ data })
-            setIsUpdated(true)
-        }
-
-        socket.on('put-broadcast', receiveUpdate)
-
-        return () => {
-            socket.off('put-broadcast', receiveUpdate);
-        };
-    }, []);
-
-    const fetchData = async () => {
-        try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL_LOCAL}/api/bays`);
-
-            if (response.ok) {
-                const data = await response.json();
-                setBays(data);
-            } else {
-                console.error('Error al obtener datos de la API:', response.status);
-            }
-        } catch (error) {
-            console.error('Error en la llamada a la API:', error);
-        }
-    };
-    */
-
-    const chunkArray = (arr, chunkSize) => {
-        const chunkedArray = [];
-        for (let i = 0; i < arr.length; i += chunkSize) {
-            chunkedArray.push(arr.slice(i, i + chunkSize));
-        }
-        return chunkedArray;
-    };
-
+    //TODO: Esta función hay que borrarla o rediseñarla
     const renderColumns = (estacionamientos) => {
         return estacionamientos.map((bay, rowIndex) => (
             <Bay
@@ -91,6 +51,7 @@ export const OnlineContainer = () => {
         setKeyword(event.target.value);
     };
 
+    //TODO: terminar este handleReset
     const handleReset = async () => {
 
         if (keyword === 'clean') {
@@ -129,8 +90,8 @@ export const OnlineContainer = () => {
     // using SWR
     const { data: estacionamientos, error } = useSWR(`${process.env.REACT_APP_API_URL_LOCAL}/api/bays`, fetcher);
 
-    if (error) return <div>Error fetching data</div>;
-    if (!estacionamientos) return <div>Loading...</div>;
+    if (error) return <div><Error /></div>;
+    if (!estacionamientos) return <div><LoadingSpinner /></div>;
 
     return (
         <div className="OnlineContainer">
