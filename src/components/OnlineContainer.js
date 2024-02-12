@@ -9,7 +9,7 @@ import useSWR from 'swr'
 import { ResetConfirmation } from "./ResetConfirmation";
 import io from 'socket.io-client'
 
-const socket = io(process.env.REACT_APP_API_URL_LOCAL)
+const socket = io(process.env.REACT_APP_API_URL)
 
 uuidv4()
 
@@ -58,7 +58,7 @@ export const OnlineContainer = () => {
             // for (let index = 1; index <= 32; index++) {
             try {
 
-                const response = await fetch(`${process.env.REACT_APP_API_URL_LOCAL}/api/bays/reset?reset=clean`, {
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/api/bays/reset?reset=clean`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json'
@@ -88,7 +88,7 @@ export const OnlineContainer = () => {
     }
 
     // using SWR
-    const { data: estacionamientos, error } = useSWR(`${process.env.REACT_APP_API_URL_LOCAL}/api/bays`, fetcher);
+    const { data: estacionamientos, error } = useSWR(`${process.env.REACT_APP_API_URL}/api/bays`, fetcher);
 
     if (error) return <div><Error /></div>;
     if (!estacionamientos) return <div><LoadingSpinner /></div>;

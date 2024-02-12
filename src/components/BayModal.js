@@ -22,7 +22,7 @@ export const BayModal = ({ bay, onSave, onCancel }) => {
             cof: updatedCof
         };
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_URL_LOCAL}/api/bays/${idbay}`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/bays/${idbay}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
